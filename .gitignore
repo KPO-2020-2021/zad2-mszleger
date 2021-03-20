@@ -1,3 +1,5 @@
 *.o # ignoruje pliki z rozszerzeniem .o
+**/obj # ignoruje folder obj
+project # ignoruje plik wykonywalny
 tests/bin/* # ignoruje pliki binarne testów
 test_arytm_zesp # ignoruje plik binarny programu
