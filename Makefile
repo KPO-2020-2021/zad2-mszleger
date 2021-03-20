@@ -8,7 +8,7 @@ FLAGS= -Wall -pedantic -std=c++14 -iquote inc
 
 ${TRGDIR}/test_arytm_zesp: ${OBJ} ${OBJ}/main.o ${OBJ}/LZespolona.o\
                      ${OBJ}/WyrazenieZesp.o ${OBJ}/BazaTestu.o ${OBJ}/BazaTestu.o ${OBJ}/Statystyki.o
-	g++ -o ${TRGDIR}/test_arytm_zesp ${OBJ}/main.o ${OBJ}/LZespolona.o\
+	g++ -o ${TRGDIR}/project ${OBJ}/main.o ${OBJ}/LZespolona.o\
                      ${OBJ}/WyrazenieZesp.o ${OBJ}/BazaTestu.o ${OBJ}/Statystyki.o
 
 ${OBJ}:
