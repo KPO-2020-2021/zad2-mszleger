@@ -1,30 +1,36 @@
 #ifndef BAZATESTU_HH
 #define BAZATESTU_HH
 
-
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <limits>
 #include "WyrazenieZesp.hh"
 
-
 /*
- * Modeluje pojecie baze testu z zestawem pytan w tablicy
- * oraz informacji o maksymalnej ilosci pytan, jak
- * tez indeksem nastepnego pytania, ktore ma byc pobrane
- * z bazy.
+ * Struktura reprezentująca zestaw pytań do testu.
+ * Zawiera wskaźnik na plik, z którego mają zostać pobrane pytanie testowe.
  */
 struct BazaTestu {
-  WyrazenieZesp  *wskTabTestu;   /* Wskaznik na tablice zawierajaca pytania testu */
-  unsigned int    IloscPytan;    /* Ilosc wszystkich pytan */
-  unsigned int    IndeksPytania; /* Numer pytania, ktore ma byc pobrane jako nastepne */
+  // Wskaźnik na otworzony plik
+  std::fstream openedFile;
+
+  /**
+   * Destruktor sprawdza czy plik został uprzednio otworzony, jeśli tak to destruktor go zamyka.
+  **/
+  ~BazaTestu();
+
+  /*
+  * Otwiera plik o danej nazwie z zadaniami testowymi.
+  * Zwraca: true - udało się otworzyć plik / false - nie udało się otworzyć pliku
+  */
+  bool InicjalizujTest(std::string nazwaPliku);
+
+  /*
+  * Udostepnia nastepne pytanie z pliku.
+  * Zwraca: true - zwrócono nowe pytanie / false - koniec plików
+  */
+  bool PobierzNastpnePytanie(WyrazenieZesp *wskWyr);
 };
-
-
-/*
- * Inicjalizuje test powiazany z dana nazwa.
- */
-bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char*  sNazwaTestu );
-/*
- * Udostepnia nastepne pytanie z bazy.
- */
-bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu,  WyrazenieZesp *wskWyr );
 
 #endif
