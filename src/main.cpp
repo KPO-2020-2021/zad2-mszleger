@@ -4,38 +4,37 @@
  * Kody błędów:
  * 1-dzielenie przez 0
  * 2-niewłaściwy kod operacji
+ * 3-nie można otworzyć pliku, ponieważ inny plik został uprzednio otwarty
 **/
 
 int main(int argc, char **argv)
 {
   // Inicjowanie zmiennych
-  WyrazenieZesp   WyrZ_PytanieTestowe;
-  Statystyka statystyka;
-  LZespolona Odpowiedz;
-  LZespolona liczbaPomocnicza(1, 1);
-  int invalidInputAmount = 0;
+  WyrazenieZesp WyrZ_PytanieTestowe;   // Zmienna przechowująca zadanie testowe
+  Statystyka statystyka;               // Zmienna przechowująca statystykę testu
+  LZespolona Odpowiedz;                // Zmienna przechowująca odpowiedź użytkownika na zadanie testowe
+  LZespolona liczbaPomocnicza(1, 1);   // Zmienna przechowująca liczbę zespoloną służącą do symulowania niepoprawnych odpowiedzi
+  BazaTestu BazaT;                     // Zmienna przechowująca zadania testowe
+  int invalidInputAmount = 0;          // Zmienna przechowująca ilość wprowadzeń liczby zespolonej w nieodpowiednim formacie
 
-
-  // Sprawdzanie czy podano argument określający poziom trudności testu
+  // Sprawdzanie czy podano argument określający nazwę pliku z zadaniami do testu
   if (argc < 2)
   {
-    std::cout << std::endl;
-    std::cout << " Brak opcji okreslajacej rodzaj testu." << std::endl;
-    std::cout << " Dopuszczalne nazwy to:  latwy, trudny." << std::endl;
-    std::cout << std::endl;
+    std::cerr << std::endl;
+    std::cerr << "  Brak opcji okreslajacej nazwę pliku z zadaniami do testu." << std::endl;
+    std::cerr << std::endl;
     return 1;
   }
 
-
-  BazaTestu   BazaT = { nullptr, 0, 0 };
-
-  if (InicjalizujTest(&BazaT,argv[1]) == false) {
-    std::cerr << " Inicjalizacja testu nie powiodla sie." << std::endl;
+  // Inicjowanie testu
+  if (BazaT.InicjalizujTest(argv[1]) == false)
+  {
+    std::cerr << "  Inicjalizacja testu nie powiodla sie. Nie udało się otworzyć pliku o podanej nazwie." << std::endl;
     return 1;
   }
 
   // Pobieranie wyrażeń z zestawu testowego i zadawanie pytań użytkownikowi  
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe))
+  while (BazaT.PobierzNastpnePytanie(&WyrZ_PytanieTestowe))
   {
     std::cout << std::endl;
     std::cout << ":? Podaj wynik operacji:  ";
@@ -51,6 +50,8 @@ int main(int argc, char **argv)
       {
         // Kasowanie flagi błędu
         std::cin.clear();
+        // Opróżnianie bufora wejściowego
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
         // Wywoływanie błędnej odpowiedzi jeśli trzeci raz podno odpowiedź w niepoprawnej formie
         if(invalidInputAmount == 2)
         {
