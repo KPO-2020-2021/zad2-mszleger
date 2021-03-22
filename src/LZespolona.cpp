@@ -53,9 +53,10 @@ LZespolona  operator / (LZespolona  liczba1,  double  liczba2)
 
 bool operator == (LZespolona  liczba1,  LZespolona  liczba2)
 {
-  if(liczba1.re != liczba2.re)
+  // Porównywanie zaokrąglonych liczb
+  if(round(liczba1.re * pow(10, PRECISION)) != round(liczba2.re * pow(10, PRECISION)))
     return false;
-  if(liczba1.im != liczba2.im)
+  if(round(liczba1.im * pow(10, PRECISION)) != round(liczba2.im * pow(10, PRECISION)))
     return false;
   return true;
 }

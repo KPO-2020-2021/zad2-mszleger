@@ -2,6 +2,10 @@
 #define LZESPOLONA_HH
 
 #include <iostream>
+#include <cmath>
+
+// Wartość określająca ilość liczb po przecinku, które mają być brane pod uwagę podczas porównywania
+#define PRECISION 2
 
 /**
  * Modeluje pojecie liczby zespolonej
