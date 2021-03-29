@@ -83,49 +83,6 @@ std::ostream & operator << (std::ostream & s, LZespolona liczba)
 
 std::istream & operator >> (std::istream& is, LZespolona& liczba)
 {
-  /*
-  char nawias, litera;
-  // Pobieranie nawiasu
-  is >> nawias;
-  if(is.fail())
-    return is;
-  if(nawias != '(')
-  {
-    is.setstate(std::ios::failbit);
-    return is;
-  }
-  // Pobieranie części rzeczywistej
-  is >> liczba.re;
-  if(liczba.re == 0)
-    liczba.re = 0;
-  if(is.fail())
-    return is;
-  // Pobieranie części urojonej
-  is >> liczba.im;
-  if(liczba.im == 0)
-    liczba.im = 0;
-  if(is.fail())
-    return is;
-  // Pobieranie litery 'i'
-  is >> litera;
-  if(is.fail())
-    return is;
-  if(litera != 'i')
-  {
-    is.setstate(std::ios::failbit);
-    return is;
-  }
-  // Pobieranie nawiasu
-  is >> nawias;
-  if(is.fail())
-    return is;
-  if(nawias != ')')
-  {
-    is.setstate(std::ios::failbit);
-    return is;
-  }
-  return is;
-  //*/
   char znak, peek1, peek2;
   double liczba1, liczba2;
   bool odczyt1 = false, odczyt2 = false;
