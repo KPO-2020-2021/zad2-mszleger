@@ -17,5 +17,15 @@ Podczas pisania fragmentu programu umożliwiającego danie użytkownikowi 3 szan
 że po każdej błędnej próbie należy wyczyścić bufor wejściowy, ponieważ w przeciwnym razie pojedyńcze błędne wpisanie wartości,
 może spowodować rozpoznanie przez program wielu błędnych prób wprowadzenia liczby.
 
+## Dokładność porównywania
 
+Dokładność porównywania można określić zmieniając wartość zmiennej symbolicznej PRECISION znajdującej się w pliku inc/LZespolona.hh.
+Wartość zmiennej symbolicznej określa do ilu miejsc po przecinku ma być wykonywane porównywanie z zaokrągleniem.
+Np. Wartość 2 oznacza, że liczby będą porównywane z dokładnością do części setnych po uprzednim zaokrągleniu.
+
+## Testy
+
+Napisałem własne testy jednostkowe, które można uruchomić wywołując komendę "make mytest".
+Nie napisałem testów dla strumieni wejściowych i wyjściowych.
+Nie napisałem testów dla struktury BazaTestu, ponieważ nie wiedziałem jak zasymulować odczyt pliku.
 
