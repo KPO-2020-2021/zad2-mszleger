@@ -37,6 +37,11 @@ ${TBIN}/test_1: ${TBIN} ${OBJ}/LZespolona.o
 ${TBIN}/test_2: ${TBIN} ${OBJ}/LZespolona.o 
 	g++ -o ${TESTS}/bin/test_2 ${FLAGS} -I${TESTS}/doctest ${TESTS}/test2.cpp ${OBJ}/LZespolona.o
 
+${TBIN}/test_LZespolona: ${TBIN} ${OBJ}/LZespolona.o 
+	g++ -o ${TESTS}/bin/test_LZespolona ${FLAGS} -I${TESTS}/doctest ${TESTS}/test_LZespolona.cpp ${OBJ}/LZespolona.o
+
+${TBIN}/test_WyrazenieZesp: ${TBIN} ${OBJ}/WyrazenieZesp.o ${OBJ}/LZespolona.o 
+	g++ -o ${TESTS}/bin/test_WyrazenieZesp ${FLAGS} -I${TESTS}/doctest ${TESTS}/test_WyrazenieZesp.cpp ${OBJ}/WyrazenieZesp.o ${OBJ}/LZespolona.o 
 
 ${TBIN}:
 	mkdir ${TBIN}
@@ -44,6 +49,9 @@ ${TBIN}:
 test:  ${TBIN}/test_1 ${TBIN}/test_2
 	${TBIN}/test_1 
 	${TBIN}/test_2
+mytest:  ${TBIN}/test_LZespolona ${TBIN}/test_WyrazenieZesp
+	${TBIN}/test_LZespolona
+	${TBIN}/test_WyrazenieZesp
 run:
 	${TRGDIR}/test_arytm_zesp latwy
 
