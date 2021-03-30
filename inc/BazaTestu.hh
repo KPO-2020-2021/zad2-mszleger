@@ -24,7 +24,7 @@ struct BazaTestu {
   * Otwiera plik o danej nazwie z zadaniami testowymi.
   * Zwraca: true - udało się otworzyć plik / false - nie udało się otworzyć pliku
   */
-  bool InicjalizujTest(std::string nazwaPliku);
+  bool InicjalizujTest(const std::string nazwaPliku);
 
   /*
   * Udostepnia nastepne pytanie z pliku.

@@ -1,20 +1,22 @@
 #include "../inc/LZespolona.hh"
 
-LZespolona  operator + (LZespolona  liczba1,  LZespolona  liczba2)
+LZespolona  operator + (const LZespolona  liczba1,  const LZespolona  liczba2)
 {
-  liczba1.re += liczba2.re;
-  liczba1.im += liczba2.im;
-  return liczba1;
+  LZespolona liczba;
+  liczba.re = liczba1.re + liczba2.re;
+  liczba.im = liczba1.im + liczba2.im;
+  return liczba;
 }
 
-LZespolona  operator - (LZespolona  liczba1,  LZespolona  liczba2)
+LZespolona  operator - (const LZespolona  liczba1,  const LZespolona  liczba2)
 {
-  liczba1.re -= liczba2.re;
-  liczba1.im -= liczba2.im;
-  return liczba1;
+  LZespolona liczba;
+  liczba.re = liczba1.re - liczba2.re;
+  liczba.im = liczba1.im - liczba2.im;
+  return liczba;
 }
 
-LZespolona  operator * (LZespolona  liczba1,  LZespolona  liczba2)
+LZespolona  operator * (const LZespolona  liczba1,  const LZespolona  liczba2)
 {
   LZespolona wynik;
   wynik.re = (liczba1.re*liczba2.re)-(liczba1.im*liczba2.im);
@@ -22,14 +24,15 @@ LZespolona  operator * (LZespolona  liczba1,  LZespolona  liczba2)
   return wynik;
 }
 
-LZespolona  operator * (LZespolona  liczba1,  double  liczba2)
+LZespolona  operator * (const LZespolona  liczba1,  const double  liczba2)
 {
-  liczba1.re *= liczba2;
-  liczba1.im *= liczba2;
-  return liczba1;
+  LZespolona liczba;
+  liczba.re = liczba1.re * liczba2;
+  liczba.im = liczba1.im * liczba2;
+  return liczba;
 }
 
-LZespolona operator * (double liczba1, LZespolona liczba2)
+LZespolona operator * (const double liczba1, const LZespolona liczba2)
 {
   return liczba2 * liczba1;
 }
@@ -42,16 +45,17 @@ LZespolona  operator / (LZespolona  liczba1,  LZespolona  liczba2)
   return (liczba1 * liczba2.Sprzezenie()) / modul2;
 }
 
-LZespolona  operator / (LZespolona  liczba1,  double  liczba2)
+LZespolona  operator / (const LZespolona  liczba1,  const double  liczba2)
 {
+  LZespolona liczba;
   if(liczba2 == 0)
     throw (1);
-  liczba1.re /= liczba2;
-  liczba1.im /= liczba2;
-  return liczba1;
+  liczba.re = liczba1.re / liczba2;
+  liczba.im = liczba1.im / liczba2;
+  return liczba;
 }
 
-bool operator == (LZespolona  liczba1,  LZespolona  liczba2)
+bool operator == (const LZespolona  liczba1,  const LZespolona  liczba2)
 {
   // Porównywanie zaokrąglonych liczb
   if(round(liczba1.re * pow(10, PRECISION)) != round(liczba2.re * pow(10, PRECISION)))
@@ -61,12 +65,12 @@ bool operator == (LZespolona  liczba1,  LZespolona  liczba2)
   return true;
 }
 
-bool operator != (LZespolona  liczba1,  LZespolona  liczba2)
+bool operator != (const LZespolona  liczba1,  const LZespolona  liczba2)
 {
   return !(liczba1 == liczba2);
 }
 
-std::ostream & operator << (std::ostream & s, LZespolona liczba)
+std::ostream & operator << (std::ostream & s, const LZespolona liczba)
 {
   // Wyświetlanie części rzeczywistej
   if(liczba.re == 0)
@@ -225,13 +229,13 @@ LZespolona::LZespolona()
   this->im = 0;
 }
 
-LZespolona::LZespolona(double reValue, double imValue)
+LZespolona::LZespolona(const double reValue, const double imValue)
 {
   this->re = reValue;
   this->im = imValue;
 }
 
-LZespolona LZespolona::Sprzezenie()
+const LZespolona LZespolona::Sprzezenie()
 {
   LZespolona liczba;
   liczba.re = this->re;
@@ -242,7 +246,7 @@ LZespolona LZespolona::Sprzezenie()
   return liczba;
 }
 
-double LZespolona::Modul2()
+const double LZespolona::Modul2()
 {
   return (this->re*this->re) + (this->im*this->im);
 }

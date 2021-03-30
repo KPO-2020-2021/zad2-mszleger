@@ -1,6 +1,6 @@
 #include "../inc/WyrazenieZesp.hh"
 
-std::ostream & operator << (std::ostream & s, WyrazenieZesp WyrZ)
+std::ostream & operator << (std::ostream & s, const WyrazenieZesp WyrZ)
 {
     char znaki[] = {'+', '-', '*', '/'};
     return s << WyrZ.Arg1 << " " << znaki[WyrZ.Op] << " " << WyrZ.Arg2;
@@ -36,7 +36,7 @@ std::istream & operator >> (std::istream & is, WyrazenieZesp & WyrZ)
     return is;
 }
 
-LZespolona WyrazenieZesp::Oblicz()
+const LZespolona WyrazenieZesp::Oblicz()
 {
     // Obsługiwanie operacji dodawania
     if(this->Op == 0)

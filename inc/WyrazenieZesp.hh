@@ -19,13 +19,13 @@ struct WyrazenieZesp {
   /**
    * Metoda zwraca wartość wyrażenia zespolonego
   **/
-  LZespolona Oblicz();
+  const LZespolona Oblicz();
 };
 
 /*
  * Przeciążenie operatora strumienia wyjściowego <<
  */
-std::ostream & operator << (std::ostream & s, WyrazenieZesp WyrZ);
+std::ostream & operator << (std::ostream & s, const WyrazenieZesp WyrZ);
 
 /*
  * Przeciążenie operatora strumienia wejściowego >>

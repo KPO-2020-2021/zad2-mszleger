@@ -6,7 +6,7 @@ BazaTestu::~BazaTestu()
     this->openedFile.close();
 }
 
-bool BazaTestu::InicjalizujTest(std::string nazwaPliku)
+bool BazaTestu::InicjalizujTest(const std::string nazwaPliku)
 {
   // Sprawdzanie czy plik nie został uprzednio otworzony
   if(this->openedFile.is_open())

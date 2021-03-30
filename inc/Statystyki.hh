@@ -13,7 +13,7 @@ struct  Statystyka {
   /**
    * Metoda wyświetla daną statystykę
   **/
-  void Wyswietl();
+  const void Wyswietl();
 };
 
 #endif

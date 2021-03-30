@@ -6,7 +6,7 @@ Statystyka::Statystyka()
     this->niepoprawne = 0;
 }
 
-void Statystyka::Wyswietl()
+const void Statystyka::Wyswietl()
 {
     std::cout << std::endl;
     std::cout << "Ilosc dobrych  odpowiedzi: " << this->poprawne << std::endl;
