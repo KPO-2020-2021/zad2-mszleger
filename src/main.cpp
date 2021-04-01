@@ -5,6 +5,7 @@
  * 1-dzielenie przez 0
  * 2-niewłaściwy kod operacji
  * 3-nie można otworzyć pliku, ponieważ inny plik został uprzednio otwarty
+ * 4-liczba zespolona równa 0 - nie można podać argumentu głównego
 **/
 
 int main(int argc, char **argv)

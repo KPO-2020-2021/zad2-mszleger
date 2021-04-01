@@ -33,7 +33,13 @@ struct  LZespolona {
    * Zwraca kwadrat modułu podanej liczby zespolonej
   **/
   const double Modul2();
+
 };
+
+/**
+ * Zwraca główny argument podanej liczby zespolonej
+**/
+const double arg(LZespolona z);
 
 /*
  * Przeciążenie operatora +: Dodawanie dwóch liczb zespolonych
@@ -69,6 +75,16 @@ LZespolona operator / (LZespolona liczba1, LZespolona liczba2);
  * Przeciążenie operatora /: Dzielenie liczby zespolonej przez liczbę rzeczywistą
  */
 LZespolona operator / (const LZespolona liczba1, const double liczba2);
+
+/*
+ * Przeciążenie operatora +=: Dodwanianie dwóch liczb zespolonych
+ */
+LZespolona operator += (LZespolona & liczba1, const LZespolona & liczba2);
+
+/*
+ * Przeciążenie operatora /=: Dzielenie liczby zespolonej przez liczbę zespoloną
+ */
+LZespolona operator /= (LZespolona & liczba1, const LZespolona & liczba2);
 
 /*
  * Przeciążenie operatora ==: Porównanie dwóch liczb zespolonych (1 - takie same / 0 - różne)

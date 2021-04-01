@@ -98,7 +98,7 @@ TEST_CASE("test LZespolona Porównanie 8"){
     CHECK(x == y);
 }
 
-TEST_CASE("test LZespolona Dodawanie"){
+TEST_CASE("test LZespolona Dodawanie 1"){
     LZespolona x, y, z;
 
     x.re = 1;
@@ -111,6 +111,23 @@ TEST_CASE("test LZespolona Dodawanie"){
     z.im = 5;
 
     CHECK((x + y) == z);
+}
+
+TEST_CASE("test LZespolona Dodawanie 2"){
+    LZespolona x, y, z;
+
+    x.re = 1;
+    x.im = 2;
+
+    y.re = 1;
+    y.im = 3;
+
+    x += y;
+
+    z.re = 2;
+    z.im = 5;
+
+    CHECK(x == z);
 }
 
 TEST_CASE("test LZespolona Odejmowanie"){
@@ -188,7 +205,7 @@ TEST_CASE("test LZespolona Dzielenie przez skalar"){
     CHECK((x / y) == z);
 }
 
-TEST_CASE("test LZespolona Dzielenie dwóch liczb zespolonych"){
+TEST_CASE("test LZespolona Dzielenie dwóch liczb zespolonych 1"){
     LZespolona x, y, z;
 
     x.re = 1;
@@ -201,6 +218,23 @@ TEST_CASE("test LZespolona Dzielenie dwóch liczb zespolonych"){
     z.im = -0.4;
 
     CHECK((x / y) == z);
+}
+
+TEST_CASE("test LZespolona Dzielenie dwóch liczb zespolonych 2"){
+    LZespolona x, y, z;
+
+    x.re = 1;
+    x.im = -2;
+
+    y.re = 3;
+    y.im = 4;
+
+    x /= y;
+
+    z.re = -0.2;
+    z.im = -0.4;
+
+    CHECK(x == z);
 }
 
 TEST_CASE("test LZespolona Moduł2"){

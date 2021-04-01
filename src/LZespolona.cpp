@@ -55,6 +55,16 @@ LZespolona  operator / (const LZespolona  liczba1,  const double  liczba2)
   return liczba;
 }
 
+LZespolona operator += (LZespolona & liczba1, const LZespolona & liczba2)
+{
+  return liczba1 = liczba1 + liczba2;
+}
+
+LZespolona operator /= (LZespolona & liczba1, const LZespolona & liczba2)
+{
+  return liczba1 = liczba1 / liczba2;
+}
+
 bool operator == (const LZespolona  liczba1,  const LZespolona  liczba2)
 {
   // Porównywanie zaokrąglonych liczb
@@ -249,4 +259,30 @@ const LZespolona LZespolona::Sprzezenie()
 const double LZespolona::Modul2()
 {
   return (this->re*this->re) + (this->im*this->im);
+}
+
+const double arg(LZespolona z)
+{
+  double wynik;
+  // Sprawdzanie czy moduł liczby zespolonej jest różny od 0
+  if(z.Modul2() == 0)
+    throw(4);
+  // Sprawdzanie czy część rzeczywista podanej liczby zespolonej jest różna od 0
+  if(z.re != 0)
+  {
+    // Część rzeczywista różna od 0
+    wynik = atan2(z.im, z.re);
+    if(wynik < 0)
+      return wynik + (2 * M_PI);
+    else
+      return wynik;
+  }else{
+    // Część rzeczywista równa 0
+    if(z.im < 0)
+    {
+      return -M_PI/2;
+    }else{
+      return M_PI/2;
+    }
+  }
 }
